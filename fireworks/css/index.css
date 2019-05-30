@@ -1,0 +1,58 @@
+body {
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	font-family: 'Montserrat';
+	font-weight: bold;
+	color:rgb(240,240,240);
+	text-align: center;
+}
+
+body *{
+	transition-duration: .2s;
+	pointer-events: none;
+}
+
+#welcomeText {
+	position: absolute;
+	display: block;
+	left: 0;
+	right: 0;
+	text-align: center;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 120px;
+	transition: opacity;
+}
+
+#yourScoreText{
+	font-size: 54px;
+	position: absolute;
+	display: block;
+	left:0;
+	right:0;
+	top:50%;
+	transform: translateY(-50%);
+	opacity: 0;
+}
+
+#restartHelpText{
+	font-size: 36px;
+	position: absolute;
+	display: block;
+	left:0;
+	right:0;
+	top:60%;
+	transform: translateY(-50%);
+	opacity: 0;
+}
+
+#scoreText{
+	font-size: 32px;
+	position: absolute;
+	display: block;
+	left:0;
+	right:0;
+	bottom:10px;
+	opacity: 0;
+}

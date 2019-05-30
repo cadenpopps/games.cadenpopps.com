@@ -1,0 +1,152 @@
+/* <div class="tiles">
+    <a href="link" class="tile blankWide">
+        <img src="background image">
+        <div class="info">
+            <div class="title">Title</div>
+            <div class="description">Lorem ipsum dolor sit amet.</div>
+        </div>
+    </a>
+</div> */
+
+:root {
+    --BGColor: rgba(0,0,0,0);
+    --blankTileBG: rgb(0,0,0);
+    --titleColor: var(--defaultTextColor);
+    --descriptionColor: var(--defaultTextColor);
+    --textFont: 'Montserrat';
+    --fontSize:22px;
+    --tileHeight:450px;
+    --tileBrightness:80%;
+    --tileBrightnessHover:40%;
+    --scaleBG: 1.09;
+    --blurTileBG:3px;
+    --blurTileBGHover:5px;
+    --mobileTileBrightness:60%;
+    --mobileTileBlur: 3px;
+    --spaceBetweenTiles:0px;
+    --spaceAroundTiles:0px;
+} 
+
+.tiles{
+    margin:0;
+    padding:var(--spaceAroundTiles);
+    width:calc(100% - (2* var(--spaceAroundTiles)));
+    background-color: var(--BGColor);
+    display: grid;
+    grid-gap: var(--spaceBetweenTiles);
+}
+
+@media(max-width:800px) and (orientation:portrait){
+    .tiles{
+        grid-template-columns: 1fr;
+    }
+    .tile{
+        height:40vh;
+    }
+    .tile img{
+        filter:brightness(var(--mobileTileBrightness)) blur(var(--blurTileBGHover)) !important;
+    }
+    .tile .info{
+        opacity: 1;
+        font-size: .8em;
+    }
+}
+@media(max-width:800px) and (orientation:landscape){
+    .tiles{
+        grid-template-columns: 1fr 1fr;
+    }
+    .tile{
+        height:60vh;
+    }
+    .tile img{
+        filter:brightness(var(--mobileTileBrightness)) blur(var(--blurTileBGHover)) !important;
+    }
+    .tile .info{
+        opacity: 1;
+        font-size: .8em;
+    }
+}
+@media(min-width:800px){
+    .oneWide{
+        grid-template-columns: 1fr;
+    }
+    .twoWide{
+        grid-template-columns: 1fr 1fr;
+    }
+    .threeWide{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .fourWide{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .fiveWide{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+
+.tile{
+    height:var(--tileHeight);
+    position: relative;
+    font-size: var(--fontSize);
+    font-family: var(--textFont);
+    font-weight: bold;
+    text-align:center;
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    background-color:var(--blankTileBG);
+    background-size: cover;
+    background-position: center;
+    transition-duration: .3s;
+    z-index: 1;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.tile img{
+    flex:none;
+    margin-top:-1%;
+    min-width:101%;
+    width:auto;
+    height:106%;
+    filter:brightness(var(--tileBrightness)) blur(var(--blurTileBG));
+    transition-duration: .3s;
+}
+
+.info{
+    margin-top:-10px;
+    padding:8px;
+    position: absolute;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    transition-duration: .2s;
+}
+
+.title{
+    margin-bottom:10px;
+    font-size: 3em;
+    opacity: 1;
+    color: var(--titleColor);
+}
+
+.description{
+    opacity: 0;
+    color: var(--descriptionColor);
+}
+
+.tile:hover img{
+    filter:brightness(var(--tileBrightnessHover)) blur(var(--blurTileBGHover));
+    transform:scale(var(--scaleBG));
+}
+
+.tile:hover .info *{
+    opacity: 1;
+    transition-duration: .7s;
+}
+
+.blankTile{
+    background-color:var(--blankTileBG);
+}

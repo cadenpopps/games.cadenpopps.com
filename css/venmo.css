@@ -1,0 +1,34 @@
+:root {
+	--defaultTextColor:rgb(242,242,248);
+	--homeButtonColor:rgb(255,100,90);
+
+    --darkText: rgb(20, 20, 40);
+    --lighter: rgb(255, 255, 255);
+
+	--color1:rgb(60, 60, 160);
+	--color2:rgb(45, 80, 145);
+	--color3:rgb(30, 100, 130);
+	--color4:rgb(15, 120, 115);
+	--color5:rgb(0, 140, 100);
+}
+
+
+*{
+    margin:0;
+    padding:0;
+}
+
+html, body{
+    overflow: hidden;
+    background-color: var(--defaultTextColor);
+    color: var(--darkText);
+}
+
+
+body{
+    font-family: Montserrat, 'Courier New', Courier, monospace;
+}
+
+a {
+    color: inherit;
+}
