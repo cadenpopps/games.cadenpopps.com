@@ -44,6 +44,10 @@ div{
     background-color: rgb(30, 200, 60);
 }
 
+#yourTime{
+    font-size: 5vw;
+}
+
 #time{
     overflow-y: auto;
     background-color: rgb(30,30,60);
@@ -53,7 +57,7 @@ div{
     position: absolute;
     display: block;
     text-align: center;
-    font-size: 55pt;
+    font-size: 4.5vw;
 }
 #timeHistory>ul{
     list-style:none;

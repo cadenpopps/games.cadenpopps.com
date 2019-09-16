@@ -11,9 +11,9 @@ const MOUSE_SIZE = 10;
 function setup() {
     createCanvas(windowWidth, windowHeight);
 
-    listen('mousemoved');
     player = new Player();
     circle = new Circle();
+
     loop();
 }
 
@@ -43,6 +43,8 @@ function endgame() {
     gameover = true;
     final();
 }
+
+function mouseMoved() {}
 
 function mousePressed() {
 

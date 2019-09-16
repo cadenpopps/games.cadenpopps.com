@@ -25,8 +25,6 @@ function setup() {
         }, 1000);
     }, 1000);
 
-    // listen("mousedown");
-
     loop();
 }
 
