@@ -29,11 +29,6 @@ function setup() {
 
 	// init();
 
-	listen('mousemoved');
-	listen('keypressed');
-	listen('mouseclicked');
-	listen('windowresized');
-
 	helpTextTimer = setTimeout(function () {
 		document.getElementById("restartHelpText").style.opacity = 1;
 	}, 1200);
@@ -200,6 +195,8 @@ function keyPressed() {
 		init();
 	}
 }
+
+function mouseMoved() {}
 
 function mouseClicked() {
 	if (!alive) {

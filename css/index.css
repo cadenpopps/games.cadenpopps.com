@@ -1,38 +1,36 @@
 
 *{
-    margin:0;
-    padding:0;
+	margin:0;
+	padding:0;
 }
 
 html, body{
-    overflow: hidden;
-    overflow-y: auto;
-    background-color: var(--darkText);
-    color: var(--defaultTextColor);
+	/* overflow-x: hidden; */
+	background-color: var(--darkText);
+	color: var(--defaultTextColor);
 }
 
 
 body{
-    font-family: Montserrat, 'Courier New', Courier, monospace;
-    font-size: 16pt;
-    padding:40px;
-    display:flex;
-    align-content: center;
-    justify-content: flex-start;
-    background-color: var(--darkText);
+	font-family: Montserrat, 'Courier New', Courier, monospace;
+	font-size: 16pt;
+	display:flex;
+	align-content: center;
+	justify-content: flex-start;
+	background-color: var(--darkText);
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 :root {
 	--defaultTextColor:rgb(242,242,248);
 	--homeButtonColor:rgb(255,100,90);
 
-    --darkText: rgb(20, 20, 40);
-    --lighter: rgb(255, 255, 255);
+	--darkText: rgb(20, 20, 40);
+	--lighter: rgb(255, 255, 255);
 
 	--color1:rgb(60, 60, 160);
 	--color2:rgb(45, 80, 145);
@@ -42,130 +40,192 @@ a {
 }
 
 h1{
-    font-size:48pt;
-    margin:0 0 30px 0;
+	font-size:48pt;
+	margin:0 0 30px 0;
 }
 
 h2{
-    font-size:30pt;
+	font-size:30pt;
 }
 
 #games{
-    position: absolute;
-    width: calc(100vw - 30px);
-    padding:15px;
+	display: flex;
 
-    left:0;
-    top:0;
-    text-align: center;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
 
+	width: calc(100vw - 90px);
+	padding:45px;
+
+	text-align: center;
 }
 
-.tiles{
-    margin:0 auto;
-    max-width: 900px;
+#title{
+	display: block;
+	min-width: 90%;
 }
 
 .tile{
-    margin:10px 0;
-    border:2px solid white;
-    border-radius: 12px;
+	min-width: 400px;
+	max-width: 600px;
+	height:300px;
+	flex-grow:1;
+	margin:10px 0;
+	border:2px solid white;
+	border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    transition-duration: .3s;
+    z-index: 1;
+    overflow: hidden;
+    cursor: pointer;
 }
 
-#support{
-    display: none;
+.tile img{
+    flex:none;
+    margin-top:-1%;
+    min-width:101%;
+    width:auto;
+    height:106%;
+    filter:brightness(var(--tileBrightness)) blur(var(--blurTileBG));
+    transition-duration: .3s;
 }
 
-@media(min-width:1200px){
-    #games{
-        position: absolute;
-        width: 800px;
-        padding:40px;
-        width: calc(100vw - 580px);
-    
-        left:0;
-        top:0;
-        text-align: left;
-        z-index: 0;
-    }
-
-    .tiles{
-        margin:0;
-        max-width: none;
-    }
-
-    #support{
-        display: block;
-        position: fixed;
-        background-color: white;
-        color:var(--darkText);
-        padding:40px;
-
-        text-align: center;
-
-        height:100vh;
-        width:400px;
-
-        top:0;
-        right:0;
-
-        z-index: 100;
-
-        -webkit-box-shadow: 0px 0px 35px 5px rgba(0,0,0,.5);
-        -moz-box-shadow: 0px 0px 35px 5px rgba(0,0,0,.5);
-        box-shadow: 0px 0px 35px 5px rgba(0,0,0,.5);
-    }
-
-    #support>p{
-        text-align: left;
-        font-size: 14pt;
-        margin-bottom: 30px;
-    }
-
-    .method{
-        display: block;
-        margin:10px 0;
-        border:2px solid var(--darkText);
-        border-radius: 12px;
-    }
-
-    .method>img{
-        max-width:100%;
-    }
-
-    #paypal{
-        float: left;
-        display:block;
-        width:max-content;
-        margin: 10px 10px 10px 0;
-    }
-
-    #paypal img{
-        display: inline-block;
-        border-radius: 12px;
-    }
-
-    #venmo{
-        display:block;
-        float:left;
-        width:200px;
-        padding:50px 20px;
-    }
+.info{
+    margin-top:-10px;
+    padding:8px;
+    position: absolute;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    transition-duration: .2s;
 }
 
-@media(min-width:1800px){
-    #games{
-        width: 1200px;
-    }
-    
-    .tile{
-        height: 50vh;
-    }
-
-    #support{
-        width:calc(100vw - 1360px);
-    }
+.title{
+    margin-bottom:10px;
+    font-size: 3em;
+    opacity: 1;
+    color: var(--titleColor);
 }
+
+.description{
+    opacity: 0;
+    color: var(--descriptionColor);
+}
+
+.tile:hover img{
+    filter:brightness(var(--tileBrightnessHover)) blur(var(--blurTileBGHover));
+    transform:scale(var(--scaleBG));
+}
+
+.tile:hover .info *{
+    opacity: 1;
+    transition-duration: .7s;
+}
+
+.tile img{
+	filter:brightness(var(--mobileTileBrightness)) blur(var(--blurTileBGHover)) !important;
+}
+
+.tile .info{
+	opacity: 1;
+	font-size: .8em;
+}
+
+/* @media(min-width:1200px){ */
+/* #games{ */
+/*     position: absolute; */
+/*     width: 800px; */
+/*     padding:40px; */
+/*     width: calc(100vw - 580px); */
+
+/*     left:0; */
+/*     top:0; */
+/*     text-align: left; */
+/*     z-index: 0; */
+/* } */
+
+/* .tiles{ */
+/*     margin:0; */
+/*     max-width: none; */
+/* } */
+
+/* #support{ */
+/*     display: block; */
+/*     position: fixed; */
+/*     background-color: white; */
+/*     color:var(--darkText); */
+/*     padding:40px; */
+
+/*     text-align: center; */
+
+/*     height:100vh; */
+/*     width:400px; */
+
+/*     top:0; */
+/*     right:0; */
+
+/*     z-index: 100; */
+
+/*     -webkit-box-shadow: 0px 0px 35px 5px rgba(0,0,0,.5); */
+/*     -moz-box-shadow: 0px 0px 35px 5px rgba(0,0,0,.5); */
+/*     box-shadow: 0px 0px 35px 5px rgba(0,0,0,.5); */
+/* } */
+
+/* #support>p{ */
+/*     text-align: left; */
+/*     font-size: 14pt; */
+/*     margin-bottom: 30px; */
+/* } */
+
+/* .method{ */
+/*     display: block; */
+/*     margin:10px 0; */
+/*     border:2px solid var(--darkText); */
+/*     border-radius: 12px; */
+/* } */
+
+/* .method>img{ */
+/*     max-width:100%; */
+/* } */
+
+/* #paypal{ */
+/*     float: left; */
+/*     display:block; */
+/*     width:max-content; */
+/*     margin: 10px 10px 10px 0; */
+/* } */
+
+/* #paypal img{ */
+/*     display: inline-block; */
+/*     border-radius: 12px; */
+/* } */
+
+/* #venmo{ */
+/*     display:block; */
+/*     float:left; */
+/*     width:200px; */
+/*     padding:50px 20px; */
+/* } */
+/* } */
+
+/* @media(min-width:1800px){ */
+/* #games{ */
+/*     width: 1200px; */
+/* } */
+
+/* .tile{ */
+/*     height: 50vh; */
+/* } */
+
+/* #support{ */
+/*     width:calc(100vw - 1360px); */
+/* } */
+/* } */
 
 
 
